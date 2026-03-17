@@ -1,0 +1,9 @@
+{
+  "name": "ngamla-twm-security-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Ngamla Twm Security & Surveillance Solutions website",
+  "dependencies": {
+    "nodemailer": "^6.9.0"
+  }
+}

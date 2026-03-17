@@ -1,0 +1,26 @@
+# Netlify configuration for Ngamla Twm Security website
+
+[build]
+  publish = "."
+  functions = "netlify/functions"
+
+[build.environment]
+  NODE_VERSION = "18"
+
+# This plugin auto-installs dependencies from netlify/functions/package.json
+[[plugins]]
+  package = "@netlify/plugin-functions-install-core"
+
+# Redirect the old /api/* path to /.netlify/functions/*
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+
+# SPA-style fallback (keeps clean URLs working)
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"

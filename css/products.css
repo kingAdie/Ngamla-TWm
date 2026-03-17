@@ -1,0 +1,765 @@
+/* ====================================================
+   PRODUCTS PAGE — products.css
+   Luxury Editorial Dark Theme
+   Ngamla Twm Security & Surveillance Solutions
+   ==================================================== */
+
+/* ─── CSS CUSTOM PROPS ─── */
+.products-page {
+  --d-accent:  #3eaaff;
+  --d-glow:    rgba(62, 170, 255, 0.12);
+  --d-border:  rgba(62, 170, 255, 0.18);
+  --h-accent:  #ff5c5c;
+  --h-glow:    rgba(255, 92, 92, 0.12);
+  --h-border:  rgba(255, 92, 92, 0.18);
+  --gold:      #E8651A;
+  --card-bg:   #0f0f0f;
+  --card-bg-2: #141414;
+  --spec-line: rgba(255,255,255,0.05);
+  --ease-out:  cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ─── HERO ─── */
+.plx-hero {
+  position: relative;
+  min-height: 88vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  padding-top: calc(var(--nav-height) + 60px);
+  padding-bottom: 0;
+  background: radial-gradient(ellipse 80% 60% at 50% 20%, rgba(232,101,26,0.06) 0%, transparent 70%),
+              var(--black);
+}
+
+/* Animated scan line */
+.plx-scan-line {
+  position: absolute; inset-x: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(232,101,26,0.4) 50%, transparent 100%);
+  top: 0;
+  animation: plxScan 6s ease-in-out infinite;
+  z-index: 1;
+}
+@keyframes plxScan {
+  0%   { transform: translateY(0); opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { transform: translateY(88vh); opacity: 0; }
+}
+
+/* Dot grid */
+.plx-dot-grid {
+  position: absolute; inset: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px);
+  background-size: 36px 36px;
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, black 0%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, black 0%, transparent 100%);
+  pointer-events: none;
+}
+
+.plx-hero-inner {
+  position: relative; z-index: 2;
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 80px;
+}
+
+.plx-hero-eyebrow {
+  display: flex; align-items: center; justify-content: center; gap: 20px;
+  margin-bottom: 40px;
+}
+.plx-eyebrow-line {
+  width: 48px; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--orange));
+}
+.plx-eyebrow-line:last-child {
+  background: linear-gradient(90deg, var(--orange), transparent);
+}
+.plx-eyebrow-text {
+  font-family: var(--font-heading);
+  font-size: 0.72rem; font-weight: 700;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--orange); opacity: 0.9;
+}
+
+.plx-hero-title {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 4px;
+  margin-bottom: 28px;
+}
+.plx-hero-line {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 10vw, 9rem);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 0.92;
+  color: var(--white);
+  text-transform: uppercase;
+}
+.plx-line-1 {
+  color: rgba(255,255,255,0.35);
+  font-weight: 300;
+  font-size: clamp(2rem, 5vw, 4.5rem);
+  letter-spacing: 0.3em;
+}
+.plx-accent {
+  font-style: normal;
+  color: var(--orange);
+  -webkit-text-stroke: 0px;
+}
+
+.plx-hero-sub {
+  font-family: var(--font-body);
+  font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+  color: rgba(255,255,255,0.45);
+  font-weight: 300;
+  line-height: 1.8;
+  margin-bottom: 56px;
+  letter-spacing: 0.02em;
+}
+
+.plx-hero-stats {
+  display: flex; align-items: center; justify-content: center; gap: 0;
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 100px;
+  background: rgba(255,255,255,0.02);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 0; width: fit-content; margin: 0 auto;
+}
+.plx-stat {
+  display: flex; flex-direction: column; align-items: center;
+  padding: 20px 40px; gap: 4px;
+}
+.plx-stat-num {
+  font-family: var(--font-display); font-size: 2rem; font-weight: 700;
+  color: var(--orange); line-height: 1;
+}
+.plx-stat-lbl {
+  font-family: var(--font-heading); font-size: 0.62rem; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+}
+.plx-stat-div {
+  width: 1px; height: 40px;
+  background: rgba(255,255,255,0.08);
+  flex-shrink: 0;
+}
+
+/* Brand anchors at bottom of hero */
+.plx-brand-anchors {
+  position: relative; z-index: 2;
+  display: flex; align-items: stretch;
+  justify-content: center;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  background: rgba(0,0,0,0.3);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.plx-anchor-btn {
+  display: flex; align-items: center; justify-content: center; gap: 12px;
+  flex: 1; max-width: 400px;
+  padding: 26px 32px;
+  font-family: var(--font-heading); font-size: 0.78rem; font-weight: 700;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: rgba(255,255,255,0.45); text-decoration: none;
+  transition: color 0.3s, background 0.3s;
+}
+.plx-anchor-btn svg { width: 16px; height: 16px; flex-shrink: 0; opacity: 0.6; }
+.plx-anchor-btn:hover { color: var(--white); background: rgba(255,255,255,0.03); }
+.plx-anchor-count {
+  font-size: 0.62rem; letter-spacing: 0.1em;
+  background: rgba(232,101,26,0.12); color: var(--orange);
+  border: 1px solid rgba(232,101,26,0.2);
+  border-radius: 100px; padding: 3px 10px;
+}
+.plx-anchor-sep {
+  width: 1px; background: rgba(255,255,255,0.06);
+  flex-shrink: 0;
+}
+
+/* ─── FILTER BAR ─── */
+.plx-filter {
+  background: rgba(12,12,12,0.98);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  z-index: 89; position: relative;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+.plx-filter.plx-filter-pinned {
+  position: sticky; top: 80px;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.7);
+  border-bottom-color: rgba(232,101,26,0.2);
+}
+.plx-filter-inner {
+  display: flex; align-items: center;
+  justify-content: space-between; gap: 20px;
+  padding: 12px 0; flex-wrap: wrap;
+}
+.plx-filter-tabs { display: flex; gap: 2px; }
+.plx-ftab {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 10px 22px;
+  font-family: var(--font-heading); font-size: 0.75rem; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: rgba(255,255,255,0.35); background: transparent;
+  border: 1px solid transparent; border-radius: 3px;
+  cursor: pointer; transition: all 0.2s;
+}
+.plx-ftab:hover { color: rgba(255,255,255,0.7); }
+.plx-ftab.plx-ftab-active {
+  color: var(--white);
+  background: rgba(232,101,26,0.08);
+  border-color: rgba(232,101,26,0.2);
+}
+.plx-ftab-n {
+  background: rgba(255,255,255,0.07); color: var(--orange);
+  font-size: 0.62rem; font-weight: 800;
+  border-radius: 100px; padding: 2px 8px; min-width: 22px;
+  text-align: center;
+}
+.plx-ftab-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+.plx-dot-d { background: var(--d-accent); }
+.plx-dot-h { background: var(--h-accent); }
+
+.plx-filter-cats { display: flex; gap: 6px; flex-wrap: wrap; }
+.plx-fcat {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 8px 18px; border-radius: 100px; cursor: pointer;
+  font-family: var(--font-heading); font-size: 0.68rem; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: rgba(255,255,255,0.35); background: transparent;
+  border: 1px solid rgba(255,255,255,0.07);
+  transition: all 0.2s;
+}
+.plx-fcat:hover { color: rgba(255,255,255,0.7); border-color: rgba(255,255,255,0.15); }
+.plx-fcat.plx-fcat-active {
+  color: var(--orange); background: rgba(232,101,26,0.08);
+  border-color: rgba(232,101,26,0.25);
+}
+
+/* ─── BRAND HEADER ─── */
+.plx-brand-hdr {
+  padding: 80px 0 48px;
+}
+.plx-brand-hdr-d { border-top: 1px solid rgba(255,255,255,0.04); }
+.plx-brand-hdr-h {
+  border-top: 3px solid rgba(255,255,255,0.04);
+  margin-top: 40px;
+}
+
+.plx-bhdr-inner {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center; gap: 48px;
+}
+.plx-bhdr-mark {
+  width: 88px; height: 88px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%; flex-shrink: 0;
+}
+.plx-bhdr-mark svg { width: 38px; height: 38px; }
+.plx-bhdr-mark-d {
+  background: var(--d-glow); border: 1px solid var(--d-border); color: var(--d-accent);
+}
+.plx-bhdr-mark-h {
+  background: var(--h-glow); border: 1px solid var(--h-border); color: var(--h-accent);
+}
+.plx-bhdr-tag {
+  display: inline-block;
+  font-family: var(--font-heading); font-size: 0.65rem; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--orange); margin-bottom: 10px;
+  padding: 4px 12px; border: 1px solid rgba(232,101,26,0.2);
+  border-radius: 2px; background: rgba(232,101,26,0.06);
+}
+.plx-bhdr-name {
+  font-family: var(--font-display); font-size: clamp(2.2rem, 5vw, 4rem);
+  font-weight: 700; color: var(--white); margin-bottom: 14px;
+  letter-spacing: 0.01em; line-height: 1;
+}
+.plx-bhdr-desc {
+  font-size: 0.95rem; color: rgba(255,255,255,0.4);
+  line-height: 1.75; margin: 0; max-width: 560px;
+  font-weight: 300;
+}
+.plx-bhdr-count {
+  text-align: right; flex-shrink: 0;
+}
+.plx-bhdr-n {
+  display: block;
+  font-family: var(--font-display); font-size: 5rem; font-weight: 700;
+  color: rgba(255,255,255,0.06); line-height: 1;
+  letter-spacing: -0.04em;
+}
+.plx-bhdr-unit {
+  display: block;
+  font-family: var(--font-heading); font-size: 0.65rem; font-weight: 700;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: rgba(255,255,255,0.2); text-align: right;
+}
+
+/* ─── PRODUCT GRID ─── */
+.plx-grid-section { padding: 0 0 80px; }
+
+.plx-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+/* ─── PRODUCT CARD ─── */
+.plx-card {
+  background: var(--card-bg);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex; flex-direction: column;
+  position: relative;
+  opacity: 0; transform: translateY(28px);
+  transition: border-color 0.35s, transform 0.35s, box-shadow 0.35s;
+  animation: none;
+}
+.plx-card.plx-card-in {
+  opacity: 1; transform: translateY(0);
+  animation: plxCardIn 0.55s var(--ease-out) both;
+}
+@keyframes plxCardIn {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.plx-card:hover {
+  border-color: rgba(232,101,26,0.25);
+  box-shadow: 0 24px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(232,101,26,0.1);
+  transform: translateY(-4px);
+}
+
+/* Badge row */
+.plx-card-badges {
+  display: flex; gap: 6px; flex-wrap: wrap;
+  padding: 18px 22px 0;
+}
+.plx-badge {
+  display: inline-block;
+  font-family: var(--font-heading); font-size: 0.56rem; font-weight: 800;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  border-radius: 2px; padding: 3px 9px;
+}
+.plx-badge-d    { background: var(--d-glow); color: var(--d-accent); border: 1px solid var(--d-border); }
+.plx-badge-h    { background: var(--h-glow); color: var(--h-accent); border: 1px solid var(--h-border); }
+.plx-badge-type { background: rgba(255,255,255,0.04); color: rgba(255,255,255,0.4); border: 1px solid rgba(255,255,255,0.07); }
+.plx-badge-nvr  { background: rgba(232,101,26,0.1); color: var(--orange); border: 1px solid rgba(232,101,26,0.2); }
+.plx-badge-pro  { background: rgba(74,222,128,0.08); color: #4ade80; border: 1px solid rgba(74,222,128,0.18); }
+
+/* Image stage */
+.plx-card-stage {
+  background: #0a0a0a;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  position: relative;
+}
+.plx-card-img-wrap {
+  position: relative;
+  height: 260px;
+  display: flex; align-items: center; justify-content: center;
+  padding: 32px 40px;
+  overflow: hidden;
+}
+.plx-nvr-img { height: 200px; padding: 24px 32px; }
+
+.plx-card-img-wrap img {
+  position: relative; z-index: 2;
+  width: 100%; height: 100%;
+  object-fit: contain; object-position: center;
+  display: block;
+  filter: drop-shadow(0 16px 40px rgba(0,0,0,0.6));
+  transition: transform 0.6s var(--ease-out);
+}
+.plx-card:hover .plx-card-img-wrap img {
+  transform: scale(1.07) translateY(-4px);
+}
+
+/* Glow behind image */
+.plx-img-glow {
+  position: absolute; inset: 0; z-index: 1;
+  border-radius: 50%;
+  width: 60%; height: 60%; margin: auto;
+  filter: blur(60px); opacity: 0;
+  transition: opacity 0.4s;
+}
+.plx-card:hover .plx-img-glow { opacity: 1; }
+.plx-img-glow-d { background: var(--d-accent); }
+.plx-img-glow-h { background: var(--h-accent); }
+
+/* Card body */
+.plx-card-content {
+  padding: 28px 24px 24px;
+  display: flex; flex-direction: column; flex: 1;
+}
+.plx-card-sku {
+  font-family: 'Barlow', monospace; font-size: 0.65rem; font-weight: 500;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: rgba(255,255,255,0.2); margin-bottom: 8px;
+}
+.plx-card-title {
+  font-family: var(--font-heading); font-size: 1.2rem; font-weight: 800;
+  color: var(--white); margin-bottom: 14px; line-height: 1.2;
+  letter-spacing: 0.01em;
+}
+.plx-card-desc {
+  font-size: 0.875rem; color: rgba(255,255,255,0.42); line-height: 1.72;
+  margin-bottom: 24px; font-weight: 300;
+}
+
+/* Specs */
+.plx-specs {
+  display: flex; flex-direction: column;
+  border-top: 1px solid var(--spec-line);
+  margin-bottom: 20px;
+}
+.plx-spec-row {
+  display: flex; justify-content: space-between; align-items: baseline;
+  gap: 12px; padding: 9px 0;
+  border-bottom: 1px solid var(--spec-line);
+}
+.plx-sk {
+  font-family: var(--font-heading); font-size: 0.62rem; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: rgba(255,255,255,0.25); white-space: nowrap; flex-shrink: 0;
+}
+.plx-sv {
+  font-size: 0.8rem; color: rgba(255,255,255,0.75); font-weight: 400;
+  text-align: right; line-height: 1.3;
+}
+
+/* Features */
+.plx-feats {
+  display: flex; flex-direction: column; gap: 7px;
+  margin-bottom: 24px; flex: 1;
+}
+.plx-feat {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 0.8rem; color: rgba(255,255,255,0.38);
+  font-weight: 300;
+}
+.plx-feat::before {
+  content: '—'; color: var(--orange); font-size: 0.7rem;
+  flex-shrink: 0; opacity: 0.7;
+}
+
+/* Footer CTA */
+.plx-card-footer {
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  margin-top: auto;
+}
+.plx-quote-btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--font-heading); font-size: 0.72rem; font-weight: 800;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--orange); text-decoration: none;
+  border: 1px solid rgba(232,101,26,0.25);
+  border-radius: 3px; padding: 13px 24px;
+  background: rgba(232,101,26,0.06);
+  width: 100%; justify-content: center;
+  transition: background 0.25s, color 0.25s, border-color 0.25s;
+}
+.plx-quote-btn:hover {
+  background: var(--orange); color: var(--white);
+  border-color: var(--orange);
+}
+.plx-quote-btn svg {
+  width: 16px; height: 16px;
+  transition: transform 0.25s;
+}
+.plx-quote-btn:hover svg { transform: translateX(4px); }
+
+/* ─── TRUST BAR ─── */
+.plx-trust-bar {
+  background: rgba(232,101,26,0.04);
+  border-top: 1px solid rgba(232,101,26,0.1);
+  border-bottom: 1px solid rgba(232,101,26,0.1);
+  padding: 28px 0;
+}
+.plx-trust-inner {
+  display: flex; align-items: center;
+  justify-content: center; gap: 0;
+  flex-wrap: wrap;
+}
+.plx-trust-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 36px;
+  font-family: var(--font-heading); font-size: 0.7rem; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+}
+.plx-trust-item svg { width: 16px; height: 16px; color: var(--orange); flex-shrink: 0; }
+.plx-trust-sep {
+  width: 1px; height: 32px;
+  background: rgba(255,255,255,0.07); flex-shrink: 0;
+}
+
+/* ─── BOTTOM CTA ─── */
+.plx-cta-section {
+  position: relative; overflow: hidden;
+  padding: 120px 0;
+  background: #060606;
+  border-top: 1px solid rgba(255,255,255,0.04);
+}
+.plx-cta-bg {
+  position: absolute; inset: 0; pointer-events: none; overflow: hidden;
+}
+.plx-cta-lines {
+  position: absolute; right: -100px; top: 50%;
+  transform: translateY(-50%);
+  width: 600px; height: 600px;
+  border-radius: 50%;
+  border: 1px solid rgba(232,101,26,0.05);
+  box-shadow:
+    0 0 0 80px rgba(232,101,26,0.02),
+    0 0 0 160px rgba(232,101,26,0.015),
+    0 0 0 240px rgba(232,101,26,0.01);
+}
+.plx-cta-inner {
+  position: relative; z-index: 2;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 80px; align-items: center;
+}
+.plx-cta-eyebrow {
+  display: flex; align-items: center; gap: 10px;
+  font-family: var(--font-heading); font-size: 0.68rem; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--orange); margin-bottom: 20px; opacity: 0.85;
+}
+.plx-cta-eyebrow svg { width: 14px; height: 14px; }
+.plx-cta-heading {
+  font-family: var(--font-display); font-size: clamp(2.4rem, 4.5vw, 4rem);
+  font-weight: 700; color: var(--white); line-height: 1.08;
+  margin-bottom: 20px; text-transform: uppercase; letter-spacing: 0.01em;
+}
+.plx-cta-heading em {
+  font-style: normal; color: var(--orange);
+}
+.plx-cta-text {
+  font-size: 0.95rem; color: rgba(255,255,255,0.4); line-height: 1.8;
+  font-weight: 300; margin-bottom: 40px;
+}
+.plx-cta-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+.plx-cta-btn-primary {
+  display: inline-flex; align-items: center; gap: 12px;
+  padding: 17px 36px; border-radius: 3px;
+  background: var(--orange); color: var(--white); text-decoration: none;
+  font-family: var(--font-heading); font-size: 0.75rem; font-weight: 800;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  border: 1px solid var(--orange);
+  transition: background 0.25s, transform 0.25s;
+}
+.plx-cta-btn-primary svg { width: 16px; height: 16px; transition: transform 0.25s; }
+.plx-cta-btn-primary:hover { background: var(--orange-light); transform: translateY(-2px); }
+.plx-cta-btn-primary:hover svg { transform: translateX(4px); }
+.plx-cta-btn-ghost {
+  display: inline-flex; align-items: center;
+  padding: 17px 32px; border-radius: 3px;
+  background: transparent; color: rgba(255,255,255,0.5); text-decoration: none;
+  font-family: var(--font-heading); font-size: 0.75rem; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  border: 1px solid rgba(255,255,255,0.1);
+  transition: color 0.25s, border-color 0.25s;
+}
+.plx-cta-btn-ghost:hover { color: var(--white); border-color: rgba(255,255,255,0.3); }
+
+/* Right contact card */
+.plx-cta-card {
+  background: var(--card-bg);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 8px; padding: 36px 32px;
+}
+.plx-ctac-label {
+  font-family: var(--font-heading); font-size: 0.62rem; font-weight: 700;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: rgba(255,255,255,0.25); margin-bottom: 24px;
+}
+.plx-ctac-contact {
+  display: flex; align-items: center; gap: 16px;
+  padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.04);
+  text-decoration: none; color: inherit;
+  transition: background 0.2s;
+}
+.plx-ctac-contact:last-of-type { border-bottom: none; }
+.plx-ctac-contact:hover .plx-ctac-val { color: var(--orange); }
+.plx-ctac-icon {
+  width: 38px; height: 38px; flex-shrink: 0;
+  background: rgba(232,101,26,0.08); border: 1px solid rgba(232,101,26,0.15);
+  border-radius: 6px; display: flex; align-items: center; justify-content: center;
+  color: var(--orange);
+}
+.plx-ctac-icon svg { width: 16px; height: 16px; }
+.plx-ctac-meta {
+  font-family: var(--font-heading); font-size: 0.58rem; font-weight: 700;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: rgba(255,255,255,0.25); margin-bottom: 3px;
+}
+.plx-ctac-val {
+  font-family: var(--font-heading); font-size: 0.95rem; font-weight: 700;
+  color: rgba(255,255,255,0.8); transition: color 0.2s;
+}
+.plx-ctac-reg {
+  display: flex; align-items: center; gap: 8px;
+  margin-top: 20px; padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.04);
+  font-family: var(--font-heading); font-size: 0.58rem; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: rgba(255,255,255,0.18);
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 1200px) {
+  .plx-grid { grid-template-columns: repeat(3, 1fr); gap: 18px; }
+}
+@media (max-width: 1024px) {
+  .plx-grid { grid-template-columns: repeat(2, 1fr); gap: 18px; }
+  .plx-bhdr-inner { grid-template-columns: auto 1fr; }
+  .plx-bhdr-count { display: none; }
+  .plx-cta-inner { grid-template-columns: 1fr; gap: 48px; }
+  .plx-cta-lines { display: none; }
+}
+@media (max-width: 768px) {
+  .plx-hero { min-height: 70vh; }
+  .plx-hero-line { font-size: clamp(3rem,12vw,5rem); }
+  .plx-line-1 { font-size: clamp(1.2rem,5vw,2rem); }
+  .plx-stat { padding: 16px 24px; }
+  .plx-stat-num { font-size: 1.6rem; }
+  .plx-brand-anchors { flex-direction: column; }
+  .plx-anchor-sep { width: 100%; height: 1px; }
+  .plx-anchor-btn { max-width: 100%; padding: 20px 24px; }
+  .plx-bhdr-inner { grid-template-columns: 1fr; }
+  .plx-bhdr-mark { width: 64px; height: 64px; }
+  .plx-bhdr-name { font-size: clamp(2rem,8vw,3rem); }
+  .plx-trust-item { padding: 8px 20px; }
+  .plx-trust-sep { display: none; }
+  .plx-filter-inner { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .plx-cta-heading { font-size: clamp(2rem, 8vw, 3rem); }
+}
+@media (max-width: 640px) {
+  .plx-grid { grid-template-columns: 1fr; gap: 16px; }
+  .plx-card-img-wrap { height: 220px; }
+  .plx-hero-stats { flex-direction: column; border-radius: 12px; }
+  .plx-stat-div { width: 60px; height: 1px; }
+}
+
+/* ══════════════════════════════════════════
+   ENHANCED PRODUCT CARD HOVER & GLOW EFFECTS
+   ══════════════════════════════════════════ */
+
+/* Card entrance animation */
+@keyframes plxCardIn {
+  from { opacity: 0; transform: translateY(32px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.plx-card.plx-card-in {
+  animation: plxCardIn 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Dahua card hover — blue glow */
+.plx-card[data-brand="dahua"]:hover {
+  border-color: rgba(62, 170, 255, 0.35);
+  box-shadow:
+    0 0 0 1px rgba(62, 170, 255, 0.1),
+    0 8px 24px rgba(62, 170, 255, 0.08),
+    0 20px 60px rgba(0, 0, 0, 0.55);
+  transform: translateY(-6px);
+}
+
+/* Hikvision card hover — red glow */
+.plx-card[data-brand="hikvision"]:hover {
+  border-color: rgba(255, 92, 92, 0.35);
+  box-shadow:
+    0 0 0 1px rgba(255, 92, 92, 0.1),
+    0 8px 24px rgba(255, 92, 92, 0.08),
+    0 20px 60px rgba(0, 0, 0, 0.55);
+  transform: translateY(-6px);
+}
+
+/* Image spotlight on hover */
+.plx-card[data-brand="dahua"]:hover .plx-img-glow {
+  background: radial-gradient(circle, rgba(62, 170, 255, 0.22) 0%, transparent 70%);
+  opacity: 1;
+  animation: glowPulse-d 2s ease-in-out infinite;
+}
+.plx-card[data-brand="hikvision"]:hover .plx-img-glow {
+  background: radial-gradient(circle, rgba(255, 92, 92, 0.22) 0%, transparent 70%);
+  opacity: 1;
+  animation: glowPulse-h 2s ease-in-out infinite;
+}
+@keyframes glowPulse-d {
+  0%, 100% { opacity: 0.7; transform: scale(1); }
+  50%       { opacity: 1;   transform: scale(1.15); }
+}
+@keyframes glowPulse-h {
+  0%, 100% { opacity: 0.7; transform: scale(1); }
+  50%       { opacity: 1;   transform: scale(1.15); }
+}
+
+/* Image zoom on hover */
+.plx-card:hover .plx-card-img-wrap img {
+  transform: scale(1.09) translateY(-5px);
+  filter: drop-shadow(0 20px 48px rgba(0,0,0,0.7));
+}
+
+/* Stage background shimmer */
+.plx-card-stage::after {
+  content: '';
+  position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(ellipse 60% 50% at 50% 100%, rgba(255,255,255,0.03) 0%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+.plx-card:hover .plx-card-stage::after { opacity: 1; }
+
+/* Quote button shimmer on card hover */
+.plx-card:hover .plx-quote-btn {
+  background: rgba(232, 101, 26, 0.12);
+  border-color: rgba(232, 101, 26, 0.4);
+}
+
+/* Card top border accent line — slides in on hover */
+.plx-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 2px; border-radius: 8px 8px 0 0;
+  background: linear-gradient(90deg, transparent 0%, var(--accent, rgba(62,170,255,0.8)) 50%, transparent 100%);
+  opacity: 0; transform: scaleX(0);
+  transition: opacity 0.4s, transform 0.4s cubic-bezier(0.22,1,0.36,1);
+}
+.plx-card[data-brand="dahua"]  { --accent: rgba(62, 170, 255, 0.9); }
+.plx-card[data-brand="hikvision"] { --accent: rgba(255, 92, 92, 0.9); }
+.plx-card:hover::before { opacity: 1; transform: scaleX(1); }
+
+/* Spec row highlight on hover */
+.plx-spec-row {
+  transition: background 0.2s;
+}
+.plx-card:hover .plx-spec-row:hover {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 3px;
+}
+
+/* SKU model number glows on card hover */
+.plx-card:hover .plx-card-sku {
+  color: rgba(255, 255, 255, 0.45);
+  transition: color 0.3s;
+}
+
+/* Feature items animate in on hover */
+.plx-feat {
+  transition: color 0.2s, transform 0.2s;
+}
+.plx-card:hover .plx-feat {
+  color: rgba(255, 255, 255, 0.55);
+}
+.plx-card:hover .plx-feat::before {
+  opacity: 1;
+  color: var(--orange);
+}
